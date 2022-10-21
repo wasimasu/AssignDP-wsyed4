@@ -1,21 +1,25 @@
-/**
- * The concrete implementation of the Person class.
- */
+
 public class Seller extends Person {
+	private int prodCate;
 
-	/**
-	 * According to the need of seller show the appropriate items on the menu. 
-	 */
-	public void showMenu() {
-
+	Seller(int prodCate) {
+		this.prodCate = prodCate;
 	}
 
-	/**
-	 * According to the Product type create a concrete product menu: 
-	 * meat or produce. 
-	 */
+	public void showMenu() {
+		theProductMenu.showMenu();
+	}
+
+
 	public ProductMenu CreateProductMenu() {
-		return null;
+		if(prodCate == 1){
+			this.theProductMenu = new MeatProductMenu();
+			return this.theProductMenu;
+		} else{
+			this.theProductMenu = new ProduceProductMenu();
+			return this.theProductMenu;
+
+		}
 	}
 
 }
