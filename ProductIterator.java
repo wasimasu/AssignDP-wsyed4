@@ -1,34 +1,39 @@
-/**
- * A concrete subclass of ListIterator that iterates the ProductList 
- */
+import java.util.List;
+
 public class ProductIterator implements ListIterator {
 
 	private ClassProductList classProductList;
+	private List<Product> productList;
+	private int position=0;
 
-	/**
-	 * If in the ProductIterator there exists the "next", return true; else return false. 
-	 */
+	public ProductIterator(List<Product> productList) {
+		this.productList = productList;
+	}
+
+
+	@Override
 	public boolean hasNext() {
-		return false;
+		return position < productList.size() && productList.get(position) != null;
+
 	}
 
-	/**
-	 * If hasNext, return the next product, move the current Item to the next product. Else return null. 
-	 */
+
+	@Override
 	public Product Next() {
-		return null;
+		Product product = productList.get(position);
+		position += 1;
+		return product;
 	}
 
-	/**
-	 * Set the current product to the location before the first product.
-	 */
+
+	@Override
 	public void MoveToHead() {
+		position=0;
 
 	}
 
-	/**
-	 * Remove the current product from the list. 
-	 */
+
+	@Override
 	public void Remove() {
 
 	}

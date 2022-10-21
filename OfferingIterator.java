@@ -1,36 +1,40 @@
-/**
- * A concrete subclass of ListIterator that iterate the OfferingList 
- */
+import java.util.List;
+
 public class OfferingIterator implements ListIterator {
 
 	private OfferingList offeringList;
-
-	/**
-	 * If in the OfferingIterator there exists the "next", return true; else return false. 
-	 */
+	private List<Offering> offe;
+	private int pos=0;
+	@Override
 	public boolean hasNext() {
-		return false;
+		return pos < offe.size() && offe.get(pos) != null;
+
 	}
 
-	/**
-	 * If hasNext, return the next offering, move the current Item to the next offering. Else return null. 
-	 */
-	public Offering Next() {
-		return null;
+	public OfferingIterator(List<Offering> offe){
+		this.offe = offe;
 	}
 
-	/**
-	 * Set the current offering to the location before the first offering.
-	 */
+	@Override
 	public void MoveToHead() {
-
+		pos=0;
 	}
 
-	/**
-	 * Remove the current offering from the list. 
-	 */
+	@Override
 	public void Remove() {
 
 	}
+
+
+	@Override
+	public Offering Next() {
+		System.out.println("Iterator method is being used here for offering product purchases");
+
+		Offering offering= offe.get(pos);
+		pos += 1;
+		return offering;
+	}
+
+
 
 }

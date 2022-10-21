@@ -1,12 +1,19 @@
-/**
- * Subclass of ArrayList. One concreted List class that needs to be iterated.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class OfferingList extends ArrayList {
 
 	private OfferingIterator offeringIterator;
+	private List<Offering> offList;
 
-	private Trading trading;
+	public OfferingList() {
+		offList = new ArrayList<>();
+	}
 
-	private Offering[] offering;
+	protected Trading trading;
 
+
+	public ListIterator createIterator() {
+		return new OfferingIterator(this.offList);
+	}
 }
